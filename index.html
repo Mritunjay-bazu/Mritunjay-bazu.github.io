@@ -307,11 +307,12 @@
 
             .sidebar {
                 width: 250px;
-                padding-top: 80px;
+                padding-top: 75px;
             }
 
             .sidebar-menu a {
-                padding: 14px 24px;
+                padding: 13px 24px;
+                font-size: 14px;
             }
 
             .sidebar.hidden {
@@ -339,12 +340,12 @@
             }
 
             .download-btn {
-                padding: 8px 16px;
+                padding: 8px 14px;
                 font-size: 13px;
             }
 
             .theme-toggle {
-                padding: 6px 12px;
+                padding: 6px 11px;
                 font-size: 12px;
                 margin-left: 5px;
             }
@@ -358,20 +359,25 @@
             }
 
             .sidebar-menu a {
-                padding: 12px 20px;
-                font-size: 14px;
+                padding: 11px 18px;
+                font-size: 13px;
             }
 
             nav {
-                padding: 1rem 3%;
+                padding: 0.8rem 2%;
             }
 
             .logo {
-                font-size: 20px;
+                font-size: 18px;
             }
 
             .download-btn {
                 display: none;
+            }
+
+            .theme-toggle {
+                padding: 5px 9px;
+                font-size: 11px;
             }
         }
 
@@ -379,7 +385,7 @@
         .hero {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
             color: var(--text-light);
-            padding: 80px 5%;
+            padding: 60px 5%;
             text-align: center;
             margin-bottom: 60px;
             position: relative;
@@ -405,7 +411,7 @@
         /* HERO ILLUSTRATION */
         .hero-illustration {
             position: relative;
-            height: 400px;
+            height: 350px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -413,19 +419,19 @@
 
         .illustration-element {
             position: absolute;
-            font-size: 80px;
+            font-size: 70px;
             animation: float 4s ease-in-out infinite;
         }
 
         .illustration-element:nth-child(1) {
-            font-size: 100px;
+            font-size: 85px;
             animation: float 5s ease-in-out infinite;
             left: 10%;
             top: 10%;
         }
 
         .illustration-element:nth-child(2) {
-            font-size: 70px;
+            font-size: 60px;
             animation: float 4s ease-in-out infinite;
             right: 15%;
             bottom: 20%;
@@ -433,7 +439,7 @@
         }
 
         .illustration-element:nth-child(3) {
-            font-size: 75px;
+            font-size: 65px;
             animation: float 6s ease-in-out infinite;
             left: 50%;
             top: 0%;
@@ -441,7 +447,7 @@
         }
 
         .illustration-element:nth-child(4) {
-            font-size: 85px;
+            font-size: 75px;
             animation: float 5.5s ease-in-out infinite;
             right: 5%;
             top: 30%;
@@ -449,7 +455,7 @@
         }
 
         .illustration-element:nth-child(5) {
-            font-size: 65px;
+            font-size: 55px;
             animation: float 4.5s ease-in-out infinite;
             left: 15%;
             bottom: 15%;
@@ -457,15 +463,15 @@
         }
 
         .center-circle {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             background: rgba(255, 255, 255, 0.1);
             border: 3px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 80px;
+            font-size: 70px;
             box-shadow: 0 0 40px rgba(255, 255, 255, 0.2), inset 0 0 40px rgba(255, 255, 255, 0.1);
             animation: pulse 3s ease-in-out infinite;
         }
@@ -492,8 +498,8 @@
         }
 
         .hero h1 {
-            font-size: 52px;
-            margin-bottom: 15px;
+            font-size: 48px;
+            margin-bottom: 12px;
             font-weight: 900;
             letter-spacing: -1.5px;
             position: relative;
@@ -502,8 +508,8 @@
         }
 
         .hero .title {
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 22px;
+            margin-bottom: 18px;
             opacity: 0.98;
             font-weight: 600;
             position: relative;
@@ -512,11 +518,11 @@
         }
 
         .hero p {
-            font-size: 16px;
-            max-width: 600px;
-            margin: 20px auto;
+            font-size: 15px;
+            max-width: 100%;
+            margin: 15px auto;
             opacity: 0.92;
-            line-height: 1.8;
+            line-height: 1.7;
             position: relative;
             z-index: 2;
             animation: slideInUp 0.8s ease-out 0.4s backwards;
@@ -1263,15 +1269,115 @@
                 gap: 15px;
                 font-size: 14px;
             }
+
+            .hero-illustration {
+                height: 300px;
+            }
+
+            .illustration-element {
+                font-size: 55px;
+            }
+
+            .illustration-element:nth-child(1) {
+                font-size: 70px;
+            }
+
+            .illustration-element:nth-child(2) {
+                font-size: 50px;
+            }
+
+            .illustration-element:nth-child(3) {
+                font-size: 55px;
+            }
+
+            .illustration-element:nth-child(4) {
+                font-size: 60px;
+            }
+
+            .illustration-element:nth-child(5) {
+                font-size: 45px;
+            }
+
+            .center-circle {
+                width: 120px;
+                height: 120px;
+                font-size: 60px;
+            }
         }
 
         @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 40px 5%;
+                gap: 30px;
+            }
+
+            .hero-illustration {
+                height: 250px;
+                order: -1;
+            }
+
             .hero h1 {
-                font-size: 36px;
+                font-size: 32px;
             }
 
             .hero .title {
-                font-size: 18px;
+                font-size: 16px;
+            }
+
+            .hero p {
+                font-size: 14px;
+                max-width: 100%;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                padding: 12px 30px;
+            }
+
+            .illustration-element {
+                font-size: 45px;
+            }
+
+            .illustration-element:nth-child(1) {
+                font-size: 55px;
+                left: 5%;
+                top: 5%;
+            }
+
+            .illustration-element:nth-child(2) {
+                font-size: 40px;
+                right: 10%;
+                bottom: 15%;
+            }
+
+            .illustration-element:nth-child(3) {
+                font-size: 45px;
+                left: 45%;
+                top: 0%;
+            }
+
+            .illustration-element:nth-child(4) {
+                font-size: 50px;
+                right: 5%;
+                top: 25%;
+            }
+
+            .illustration-element:nth-child(5) {
+                font-size: 35px;
+                left: 10%;
+                bottom: 10%;
+            }
+
+            .center-circle {
+                width: 100px;
+                height: 100px;
+                font-size: 50px;
             }
 
             .section-title {
@@ -1292,9 +1398,13 @@
             }
 
             nav {
-                flex-direction: column;
-                gap: 15px;
-                padding: 1rem 2%;
+                flex-direction: row;
+                gap: 10px;
+                padding: 0.8rem 3%;
+            }
+
+            .nav-right {
+                gap: 5px;
             }
 
             .nav-links {
@@ -1303,25 +1413,63 @@
             }
 
             header {
-                padding: 1rem 0;
+                padding: 0;
             }
 
             .experience-header {
                 flex-direction: column;
+                gap: 10px;
             }
 
             .contact-content {
                 padding: 30px 20px;
             }
+
+            .about-image {
+                text-align: center;
+            }
+
+            .profile-img {
+                width: 180px;
+                height: 180px;
+                font-size: 50px;
+                margin: 0 auto;
+            }
         }
 
         @media (max-width: 480px) {
             .hero {
-                padding: 40px 3%;
+                padding: 30px 3%;
+                gap: 20px;
+            }
+
+            .hero-illustration {
+                height: 200px;
             }
 
             .hero h1 {
-                font-size: 28px;
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .hero .title {
+                font-size: 14px;
+            }
+
+            .hero p {
+                font-size: 13px;
+                margin: 12px auto;
+                line-height: 1.6;
+            }
+
+            .hero-buttons {
+                gap: 10px;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 10px 20px;
+                font-size: 14px;
             }
 
             .container {
@@ -1329,7 +1477,9 @@
             }
 
             .section-title {
-                font-size: 20px;
+                font-size: 18px;
+                margin-bottom: 30px;
+                padding-bottom: 12px;
             }
 
             .skill-category {
@@ -1337,29 +1487,182 @@
             }
 
             .experience-item {
-                padding: 20px;
+                padding: 18px;
             }
 
             .education-card {
-                padding: 20px;
+                padding: 18px;
             }
 
             .project-header {
-                padding: 20px;
+                padding: 18px;
+                min-height: 100px;
             }
 
             .project-body {
-                padding: 20px;
+                padding: 18px;
             }
 
             .profile-img {
-                width: 150px;
-                height: 150px;
+                width: 140px;
+                height: 140px;
                 font-size: 40px;
             }
 
             .nav-links {
                 display: none;
+            }
+
+            .nav {
+                gap: 5px;
+            }
+
+            .download-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+
+            .theme-toggle {
+                padding: 5px 10px;
+                font-size: 11px;
+            }
+
+            .hamburger {
+                gap: 5px;
+            }
+
+            .hamburger span {
+                width: 20px;
+                height: 2px;
+            }
+
+            .sidebar {
+                width: 100%;
+                max-width: none;
+                padding-top: 60px;
+            }
+
+            .sidebar-menu a {
+                padding: 12px 20px;
+                font-size: 13px;
+            }
+
+            .illustration-element {
+                font-size: 35px;
+            }
+
+            .illustration-element:nth-child(1) {
+                font-size: 42px;
+                left: 0%;
+                top: 0%;
+            }
+
+            .illustration-element:nth-child(2) {
+                font-size: 32px;
+                right: 5%;
+                bottom: 10%;
+            }
+
+            .illustration-element:nth-child(3) {
+                font-size: 35px;
+                left: 40%;
+            }
+
+            .illustration-element:nth-child(4) {
+                font-size: 38px;
+                right: 2%;
+                top: 20%;
+            }
+
+            .illustration-element:nth-child(5) {
+                font-size: 28px;
+                left: 5%;
+                bottom: 5%;
+            }
+
+            .center-circle {
+                width: 90px;
+                height: 90px;
+                font-size: 45px;
+            }
+
+            .job-title {
+                font-size: 16px;
+            }
+
+            .company {
+                font-size: 14px;
+            }
+
+            .degree {
+                font-size: 16px;
+            }
+
+            .project-title {
+                font-size: 16px;
+            }
+
+            .contact-content {
+                padding: 20px 15px;
+            }
+
+            .message-section {
+                padding: 20px 15px;
+            }
+
+            .message-section h3 {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            .form-group label {
+                font-size: 13px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                font-size: 13px;
+                padding: 10px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .submit-btn {
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            .social-link {
+                width: 45px;
+                height: 45px;
+                font-size: 16px;
+            }
+
+            .contact-label {
+                font-size: 11px;
+            }
+
+            .contact-value {
+                font-size: 14px;
+            }
+
+            .skill-name {
+                font-size: 13px;
+            }
+
+            .tech-tag {
+                font-size: 11px;
+                padding: 5px 12px;
+            }
+
+            .project-category {
+                font-size: 11px;
+            }
+
+            .education-description {
+                font-size: 12px;
             }
         }
 
@@ -1457,7 +1760,8 @@
         <nav>
             <div class="logo">Mritunjay Basumatary</div>
             <div class="nav-right">
-                <a href="files/Resume.pdf" class="download-btn" download>Get Resume</a>
+                <button class="theme-toggle" onclick="toggleTheme()"> Dark</button>
+                <a href="files/resume.pdf" class="download-btn" download>Resume</a>
                 <div class="hamburger" onclick="toggleSidebar()">
                     <span></span>
                     <span></span>
