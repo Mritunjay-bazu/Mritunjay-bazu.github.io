@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume - Mritunjay Basumatary</title>
+    <style>
+        :root {
+            --primary-color: #204c80;
+            --accent-color: #3498db;
+            --bg-white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+        }
+        body { margin:0; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#f7f7f7; color:var(--text-dark); transition: background-color 0.3s, color 0.3s; line-height:1.7; letter-spacing:0.3px; }
+        body.dark-mode { background:#1a1a1a; color:var(--text-light); }
+        header { position:sticky; top:0; background:var(--primary-color); color:white; padding:18px 18px; z-index:20; transition: background-color 0.3s; box-shadow:0 8px 32px rgba(0,0,0,0.15); }
+        body.dark-mode header { background:#1a3a52; }
+        .nav-right { display:flex; gap:10px; align-items:center; }
+        .theme-toggle { background:transparent; border:2px solid white; color:white; padding:8px 12px; border-radius:6px; cursor:pointer; font-weight:600; font-size:13px; transition:all 0.3s; }
+        .theme-toggle:hover { background:rgba(255,255,255,0.1); }
+        .header-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+        .header-row h1 { font-size:24px; margin:0; font-weight:900; }
+        .header-row .sub { font-size:14px; opacity:.9; }
+        .container { max-width:950px; margin:40px auto; background:var(--bg-white); border-radius:14px; box-shadow:0 12px 40px rgba(0,0,0,.1); padding:40px; transition:background-color 0.3s; border:1px solid rgba(52,152,219,0.08); }
+        body.dark-mode .container { background:#2d2d2d; }
+        .section { margin-bottom:35px; animation: fadeInUp 0.6s ease-out; }
+        .section h2 { margin-bottom:16px; color:var(--primary-color); font-size:22px; font-weight:900; border-bottom:3px solid var(--accent-color); display:inline-block; padding-bottom:8px; letter-spacing:-0.5px; }
+        body.dark-mode .section h2 { color:#5dade2; border-bottom-color:#5dade2; }
+        .two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        .card { background:#f9fbfd; border:1px solid rgba(52,152,219,0.12); border-radius:10px; padding:20px; transition:all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); animation: fadeInUp 0.6s ease-out; }
+        body.dark-mode .card { background:#3a3a3a; border-color:#444; }
+        .card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(52,152,219,0.15); }
+        .list { list-style:disc inside; margin:8px 0 0 0; padding-left:16px; color: var(--text-dark); transition: color 0.3s ease; }
+        body.dark-mode .list { color: var(--text-light); }
+        .small { font-size:14px; color:var(--text-dark); transition: color 0.3s ease; }
+        body.dark-mode .small { color:var(--text-light); }
+        a.button { background:var(--accent-color); color:white; text-decoration:none; padding:11px 20px; border-radius:8px; font-weight:700; margin-right:10px; display:inline-block; transition:all 0.3s; box-shadow:0 4px 12px rgba(52,152,219,0.2); }
+        a.button:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(52,152,219,0.3); }
+        .top-nav { margin-bottom:20px; }
+        .top-nav a { margin-right:10px; color:var(--primary-color); text-decoration:none; font-weight:600; transition: color 0.3s ease; }
+        body.dark-mode .top-nav a { color:#5dade2; }
+        .top-nav a:hover { text-decoration:underline; }
+        header a { color:var(--text-light); text-decoration:none; font-weight:600; }
+        header a:hover { text-decoration:underline; }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        /* ===== SIDEBAR MENU ===== */
+        .sidebar {
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100vh;
+            width: 280px;
+            background: linear-gradient(180deg, var(--bg-white) 0%, rgba(255,255,255,0.95) 100%);
+            box-shadow: -8px 0 32px rgba(0, 0, 0, 0.15);
+            z-index: 90;
+            padding-top: 100px;
+            overflow-y: auto;
+            transform: translateX(0);
+            transition: transform 0.3s ease;
+        }
+
+        body.dark-mode .sidebar {
+            background: linear-gradient(180deg, var(--bg-white) 0%, rgba(45,45,45,0.95) 100%);
+        }
+
+        .sidebar.hidden {
+            transform: translateX(100%);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 30px 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 16px 30px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            cursor: pointer;
+            position: relative;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: rgba(52, 152, 219, 0.08);
+            border-left-color: var(--accent-color);
+            padding-left: 35px;
+            color: var(--primary-color);
+        }
+
+        .sidebar-divider {
+            height: 1px;
+            background: rgba(52, 152, 219, 0.1);
+            margin: 20px 30px;
+        }
+
+        /* ===== HAMBURGER MENU ===== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            margin-left: 15px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2.5px;
+            background-color: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(12px, 12px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(10px, -10px);
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 80;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (min-width:1025px) {
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @media (max-width:1024px) {
+            .sidebar {
+                width: 250px;
+                padding-top: 80px;
+            }
+
+            .sidebar-menu a {
+                padding: 14px 24px;
+            }
+
+            .sidebar.hidden {
+                transform: translateX(100%);
+            }
+        }
+
+        @media (max-width:768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .sidebar {
+                width: 100%;
+                max-width: 280px;
+                padding-top: 70px;
+            }
+
+            .sidebar-menu a {
+                padding: 14px 24px;
+            }
+
+            .nav-right {
+                gap: 8px;
+            }
+
+            .header-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .header-row h1 {
+                font-size: 18px;
+            }
+
+            .header-row .sub {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width:480px) {
+            .sidebar {
+                width: 100%;
+                max-width: none;
+                padding-top: 60px;
+            }
+
+            .sidebar-menu a {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            header {
+                padding: 12px 12px;
+            }
+
+            .header-row h1 {
+                font-size: 16px;
+            }
+
+            .header-row .sub {
+                font-size: 11px;
+            }
+        }
+
+        /* ===== BACK TO TOP BUTTON ===== */
+        #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            z-index: 99;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+            transition: all 0.3s ease;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #backToTopBtn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
+        }
+
+        #backToTopBtn.show {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            #backToTopBtn {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            header, .hamburger, .theme-toggle, .sidebar, .sidebar-overlay, #backToTopBtn {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+
+            .container, .card, .section {
+                box-shadow: none;
+                border: none;
+                page-break-inside: avoid;
+            }
+
+            a {
+                color: black;
+                text-decoration: underline;
+            }
+
+            .section h2 {
+                color: black;
+            }
+
+            h1, h2, h3 {
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-row">
+        <div>
+            <h1>Mritunjay Basumatary</h1>
+            <div class="sub">B.Tech ECE | Communications Engineer & Software Developer</div>
+            <div class="sub">LinkedIn: <a href="https://www.linkedin.com/in/mritunjay-basumatary-374937389" target="_blank" style="color:#ecf0f1; text-decoration:underline;">mritunjay-basumatary</a> | GitHub: <a href="https://github.com/Mritunjay-bazu" target="_blank" style="color:#ecf0f1; text-decoration:underline;">Mritunjay-bazu</a></div>
+        </div>
+        <div class="nav-right">
+            <button class="theme-toggle" onclick="toggleTheme()">Dark</button>
+             <div class="sub">• mritunjayb@yahoo.com </div>
+            <div class="hamburger" onclick="toggleSidebar()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+           
+    </div>
+</header>
+
+<!-- SIDEBAR MENU -->
+<div class="sidebar-overlay" onclick="closeSidebar()" id="sidebarOverlay"></div>
+<aside class="sidebar hidden" id="sidebar">
+    <ul class="sidebar-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html" onclick="closeSidebar()">Projects</a></li>
+        <li><a href="achievements.html" onclick="closeSidebar()">Achievements</a></li>
+        <li><a href="blog.html" onclick="closeSidebar()">Blog</a></li>
+        <div class="sidebar-divider"></div>
+        <li><a href="resume.html" onclick="closeSidebar()">Resume (Current)</a></li>
+        <div class="sidebar-divider"></div>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#education">Education</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</aside>
+<main class="container">
+    <nav class="top-nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="achievements.html">Achievements</a>
+        <a class="button" href="resume.pdf" target="_blank">Download PDF</a>
+    </nav>
+
+    <section class="section" id="summary">
+        <h2>Professional Summary</h2>
+        <p>A results-oriented undergraduate with strong hands-on experience in wireless communication systems, UAV networks, IoT, and full-stack development. Skilled in MATLAB, Python, JavaScript, React, Node.js, and system-level problem solving. Proven ability to design end-to-end systems and deliver impactful technical reports and prototypes.</p>
+    </section>
+
+    <section class="section" id="skills">
+        <h2>Technical Skills</h2>
+        <div class="two-col">
+            <div class="card">
+                <h3>Programming</h3>
+                <p class="small">MATLAB, Python, JavaScript, C, C++</p>
+            </div>
+            <div class="card">
+                <h3>Web</h3>
+                <p class="small">HTML/CSS, React, Node.js, Express, MongoDB</p>
+            </div>
+            <div class="card">
+                <h3>Networking & Security</h3>
+                <p class="small">Wireless Comm, RSMA, IoT, Cryptography, Network Protocol Design</p>
+            </div>
+            <div class="card">
+                <h3>Tools</h3>
+                <p class="small">Git, AWS (IoT Core, DynamoDB), Blender, Linux</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="experience">
+        <h2>Experience</h2>
+        <div class="card">
+            <h3>Intern - Network & Communication, NIELIT Kokrajhar EC</h3>
+            <p class="small">May 2025 - July 2025</p>
+            <ul class="list">
+                <li>Developed wireless communication prototypes and IoT deployment strategies.</li>
+                <li>Assisted in network planning, simulation, and analysis for field trials.</li>
+                <li>Created optimization reports and collaborated with cross-functional team on system integration.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Industrial Trainee - NTPC Bongaigaon</h3>
+            <p class="small">Dec 2024 - Jan 2025</p>
+            <ul class="list">
+                <li>Studied thermal power plant systems, control systems, and automation practices.</li>
+                <li>Prepared documentation and knowledge transfer materials for operations.</li>
+                <li>Improved process understanding via hands-on data collection, instrumentation and report generation.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Technical Lead - Techcracy (CIT Kokrajhar)</h3>
+            <p class="small">Oct 2025 - Dec 2025</p>
+            <ul class="list">
+                <li>Mentored and coordinated 20+ volunteers for large-scale technical events.</li>
+                <li>Managed event logistics, budget, and infrastructure for participants.</li>
+                <li>Ensured smooth execution of workshops, hackathons, and competitions.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section" id="education">
+        <h2>Education</h2>
+        <div class="card">
+            <h3>B.Tech, Electronics & Communication Engineering</h3>
+            <p class="small">Central Institute of Technology, Kokrajhar | 2022 - 2026 (Expected) | CGPA: 6.55</p>
+            <ul class="list">
+                <li>Specialization in wireless communication, digital signal processing, and network design.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Higher Secondary (12th), Science</h3>
+            <p class="small">Don Bosco Senior Secondary School, Chapaguri | 2022 | 66.6%</p>
+        </div>
+        <div class="card">
+            <h3>High School</h3>
+            <p class="small">St. John Bosco School, Labraboti | 2020 | 85%</p>
+        </div>
+    </section>
+
+    <section class="section" id="projects">
+        <h2>Key Projects</h2>
+        <div class="card">
+            <h3>UAV-Assisted Vehicular Network</h3>
+            <p>RSMA-enabled UAV relay system for 5G-like road network comms. MATLAB simulation + Python automation.</p>
+        </div>
+        <div class="card">
+            <h3>Premium OTT Streaming Platform</h3>
+            <p>Full-stack web app with user authentication, media workflows, and responsive UX (Node.js + React).</p>
+        </div>
+        <div class="card">
+            <h3>Digital Twin Environment</h3>
+            <p>3D UAV network simulation using Blender coupled with Python data analysis.</p>
+        </div>
+        <div class="card">
+            <h3>IoT Environmental Monitoring</h3>
+            <p>Sensor network prototype with cloud data pipeline, dashboard, and alerting (Arduino + AWS).</p>
+        </div>
+        <div class="card">
+            <h3>Network Cryptography Suite</h3>
+            <p>Python implementation of AES, RSA, HMAC and secure session key handling for hardened comms.</p>
+        </div>
+    </section>
+
+    <section class="section" id="achievements">
+        <h2>Achievements</h2>
+        <div class="card">
+            <h3>Best Technical Project - Techcracy 2025</h3>
+            <p>UAV-Assisted Vehicular Network recognized for innovation and practical utility.</p>
+        </div>
+        <div class="card">
+            <h3>Industry Training Commendation - NTPC</h3>
+            <p>Acknowledged for strong on-site performance and technical report insights.</p>
+        </div>
+        <div class="card">
+            <h3>Published Research Poster</h3>
+            <p>Presented RSMA for UAV comms at national symposium (2025).</p>
+        </div>
+        <div class="card">
+            <h3>Cloud Certification Path</h3>
+            <p>Multiple certifications (Coursera/Udemy) in AWS fundamentals and secure design.</p>
+        </div>
+    </section>
+</main>
+
+<!-- BACK TO TOP BUTTON -->
+<button id="backToTopBtn" onclick="backToTop()" title="Back to Top">↑</button>
+
+<script>
+    // Back to Top functionality
+    function backToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        if (backToTopBtn) {
+            window.addEventListener('scroll', function() {
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+        }
+    });
+
+    // Sidebar toggle
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const hamburger = document.querySelector('.hamburger');
+        
+        sidebar.classList.toggle('hidden');
+        overlay.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    }
+
+    function closeSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const hamburger = document.querySelector('.hamburger');
+        
+        sidebar.classList.add('hidden');
+        overlay.classList.remove('active');
+        hamburger.classList.remove('active');
+    }
+
+    // Close sidebar on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeSidebar();
+        }
+    });
+
+    // Close sidebar on window resize if screen is large enough
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            closeSidebar();
+        }
+    });
+
+    function toggleTheme() {
+        const body = document.body;
+        const themeBtn = document.querySelector('.theme-toggle');
+        
+        if (body.classList.contains('dark-mode')) {
+            body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+            themeBtn.textContent = '🌙 Dark';
+        } else {
+            body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+            themeBtn.textContent = '☀️ Light';
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+        const savedTheme = localStorage.getItem('theme');
+        const themeBtn = document.querySelector('.theme-toggle');
+        
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            if (themeBtn) themeBtn.textContent = '☀️ Light';
+        }
+    });
+</script>
+</body>
+</html>
